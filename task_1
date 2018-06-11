@@ -1,0 +1,30 @@
+# coding_challenge_algorithm
+#導入されている硬貨の配列をうける
+n = int(input("input n:"))
+c = []
+for i in range(n):
+    tmp_1 = int(input("input c_%s:" %(i+1)))
+    c.append(tmp_1)
+#支払う金額の配列をうける
+m = int(input("input m:"))
+v = []
+for i in range(m):
+    tmp_2 = int(input("input v_%s:" %(i+1)))
+    v.append(tmp_2)
+#支払う硬貨数をかえす
+def Count(x):
+    def SmallCount(x,y):
+        count=0
+        for i in range(y):
+            count += x//c[y-1-i]
+            x = x%c[y-1-i]
+        return count
+    min=x
+    for i in range(n):
+        t=SmallCount(x,i+1)
+        if(t<min):
+            min=t
+    return min
+
+for i in range(m):
+    print(Count(v[i]))
