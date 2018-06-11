@@ -1,0 +1,22 @@
+# coding_challenge_algorithm
+from collections import deque
+q = deque([])
+max = deque([0])
+while True:
+    command = input("command(push,pop,peek,max or quit) :")
+    if (command=='push'):
+        num = int(input("number :"))
+        q.append(num)
+        if(max[-1]<num):
+            max.append(num)
+    if(command=='pop'):
+        if(len(max)>1):
+            if(q[-1]==max[-1]):
+                max.remove(q[-1])
+        q.pop()
+    if(command=='peek'):
+        print(q[-1])
+    if(command=='max'):
+        print(max[-1])
+    if(command=='quit'):
+        break
